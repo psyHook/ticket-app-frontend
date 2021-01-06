@@ -6,7 +6,13 @@ import {
   UploadOutlined,
 } from '@ant-design/icons';
 
-import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+} from 'react-router-dom';
 import { Join } from './Join';
 import { Queue } from './Queue';
 import { CreateTicket } from './CreateTicket';
@@ -18,7 +24,7 @@ export const RouterPages = () => {
   return (
     <Router>
       <Layout style={{ height: '100vh' }}>
-        <Sider hidden={false}>
+        <Sider collapsedWidth='0' breakpoint='md'>
           <div className='logo' />
           <Menu theme='dark' mode='inline' defaultSelectedKeys={['1']}>
             <Menu.Item key='1' icon={<UserOutlined />}>
@@ -33,7 +39,6 @@ export const RouterPages = () => {
           </Menu>
         </Sider>
         <Layout className='site-layout'>
-
           <Content
             className='site-layout-background'
             style={{
@@ -48,10 +53,9 @@ export const RouterPages = () => {
               <Route path='/create' component={CreateTicket} />
 
               <Route path='/desktop' component={Desktop} />
-              <Redirect to="/join" />
+              <Redirect to='/join' />
             </Switch>
           </Content>
-
         </Layout>
       </Layout>
     </Router>
