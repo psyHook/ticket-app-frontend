@@ -6,27 +6,34 @@ import {
   UploadOutlined,
 } from '@ant-design/icons';
 
-const {  Sider, Content } = Layout;
+import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
+import { Join } from './Join';
+import { Queue } from './Queue';
+import { CreateTicket } from './CreateTicket';
+import { Desktop } from './Desktop';
+
+const { Sider, Content } = Layout;
 
 export const RouterPages = () => {
   return (
-    <div>
-      <Layout style={{ height: '100vh'}}>
-        <Sider>
+    <Router>
+      <Layout style={{ height: '100vh' }}>
+        <Sider hidden={false}>
           <div className='logo' />
           <Menu theme='dark' mode='inline' defaultSelectedKeys={['1']}>
             <Menu.Item key='1' icon={<UserOutlined />}>
-              Get In
+              <Link to='/join'>Join</Link>
             </Menu.Item>
             <Menu.Item key='2' icon={<VideoCameraOutlined />}>
-              Queue
+              <Link to='/queue'>Queue</Link>
             </Menu.Item>
             <Menu.Item key='3' icon={<UploadOutlined />}>
-              Create Ticket
+              <Link to='/create'>Create Ticket</Link>
             </Menu.Item>
           </Menu>
         </Sider>
         <Layout className='site-layout'>
+
           <Content
             className='site-layout-background'
             style={{
@@ -35,10 +42,18 @@ export const RouterPages = () => {
               minHeight: 280,
             }}
           >
-            Content
+            <Switch>
+              <Route path='/join' component={Join} />
+              <Route path='/queue' component={Queue} />
+              <Route path='/create' component={CreateTicket} />
+
+              <Route path='/desktop' component={Desktop} />
+              <Redirect to="/join" />
+            </Switch>
           </Content>
+
         </Layout>
       </Layout>
-    </div>
+    </Router>
   );
 };

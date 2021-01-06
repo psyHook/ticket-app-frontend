@@ -1,9 +1,9 @@
 import React from 'react'
 
-export const GetIn = () => {
+export const Join = () => {
     return (
         <div>
-            Get In Page
+            Join Page
         </div>
     )
 }

@@ -3,7 +3,7 @@ import React from 'react'
 export const CreateTicket = () => {
     return (
         <div>
-            Create Ticker Page
+            Create Ticket Page
         </div>
     )
 }
