@@ -1,7 +1,10 @@
-import React from "react";
+import React from 'react';
 
-import { Form, Input, Button, InputNumber } from "antd";
-import { SaveOutlined } from "@ant-design/icons";
+import { Form, Input, Button, InputNumber, Typography, Divider } from 'antd';
+import { SaveOutlined } from '@ant-design/icons';
+import { useHistory } from 'react-router-dom';
+
+const { Title, Text } = Typography;
 
 const layout = {
   labelCol: { span: 8 },
@@ -12,44 +15,55 @@ const tailLayout = {
 };
 
 export const Join = () => {
+
+    const history = useHistory();
+
   const onFinish = (values) => {
-    console.log("Success:", values);
+    console.log('Success:', values);
+
+    history.push('/desktop')
   };
 
   const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+    console.log('Failed:', errorInfo);
   };
 
   return (
-    <Form
-      {...layout}
-      name="basic"
-      initialValues={{ remember: true }}
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
-    >
-      <Form.Item
-        label="Agent Name"
-        name="agent"
-        rules={[{ required: true, message: "Please input your name!" }]}
-      >
-        <Input />
-      </Form.Item>
+    <>
+      <Title level={2}>Enter</Title>
+      <Text>Enter your name and desk number</Text>
+      <Divider/>
 
-      <Form.Item
-        label="Desktop"
-        name="desktop"
-        rules={[{ required: true, message: "Please input your desktop!" }]}
+      <Form
+        {...layout}
+        name='basic'
+        initialValues={{ remember: true }}
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
       >
-        <InputNumber  min={1} max={99}/>
-      </Form.Item>
+        <Form.Item
+          label='Agent Name'
+          name='agent'
+          rules={[{ required: true, message: 'Please input your name!' }]}
+        >
+          <Input />
+        </Form.Item>
 
-      <Form.Item {...tailLayout}>
-        <Button type="primary" htmlType="submit" shape="round">
-        <SaveOutlined />
-          Join
-        </Button>
-      </Form.Item>
-    </Form>
+        <Form.Item
+          label='Desktop'
+          name='desktop'
+          rules={[{ required: true, message: 'Please input your desktop!' }]}
+        >
+          <InputNumber min={1} max={99} />
+        </Form.Item>
+
+        <Form.Item {...tailLayout}>
+          <Button type='primary' htmlType='submit' shape='round'>
+            <SaveOutlined />
+            Join
+          </Button>
+        </Form.Item>
+      </Form>
+    </>
   );
 };

@@ -31,7 +31,7 @@ export const RouterPages = () => {
               <Link to='/join'>Join</Link>
             </Menu.Item>
             <Menu.Item key='2' icon={<VideoCameraOutlined />}>
-              <Link to='/queue'>Queue</Link>
+              <Link to='/queue'>Queue Ticket</Link>
             </Menu.Item>
             <Menu.Item key='3' icon={<UploadOutlined />}>
               <Link to='/create'>Create Ticket</Link>
