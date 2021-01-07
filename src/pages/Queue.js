@@ -75,7 +75,7 @@ export const Queue = () => {
             renderItem={(item) => (
               <List.Item>
                 <List.Item.Meta
-                  title={`Ticket Nº. ${item.ticketNo}`}
+                  title={`Ticket Nº ${item.ticketNo}`}
                   description={
                     <>
                       <Text type="secondary">On the desk: </Text>

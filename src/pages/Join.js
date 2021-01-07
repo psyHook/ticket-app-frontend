@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Form, Input, Button, InputNumber, Typography, Divider } from 'antd';
 import { SaveOutlined } from '@ant-design/icons';
-import { useHistory } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { useHideMenu } from '../hooks/useHideMenu';
+import { getUserStorage } from '../helpers/getUserStorage';
 
 const { Title, Text } = Typography;
 
@@ -18,10 +19,14 @@ const tailLayout = {
 export const Join = () => {
 
     const history = useHistory();
+    const [ user ] = useState( getUserStorage() );
+
     useHideMenu( false );
 
-  const onFinish = (values) => {
-    console.log('Success:', values);
+  const onFinish = ({ agent, desktop }) => {
+
+    localStorage.setItem('agent', agent);
+    localStorage.setItem('desktop', desktop);
 
     history.push('/desktop')
   };
@@ -29,6 +34,10 @@ export const Join = () => {
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
+
+  if( user.agent && user.desktop ){
+    return <Redirect to="/desktop" />
+  }
 
   return (
     <>
