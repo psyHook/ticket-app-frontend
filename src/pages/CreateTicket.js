@@ -31,7 +31,7 @@ export const CreateTicket = () => {
           <Text level={2}>Your number</Text>
           <br />
           <Text type="success" style={{ fontSize: 55 }}>
-            66
+            67
           </Text>
         </Col>
       </Row>
