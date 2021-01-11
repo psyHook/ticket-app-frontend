@@ -42,7 +42,7 @@ export const Join = () => {
   return (
     <>
       <Title level={2}>Enter</Title>
-      <Text>Enter your name and desk number</Text>
+      <Text>Enter your Name and desk number</Text>
       <Divider/>
 
       <Form
