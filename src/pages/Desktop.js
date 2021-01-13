@@ -23,7 +23,6 @@ export const Desktop = () => {
   };
 
   const nextTicket = () => {
-    console.log(user);
     socket.emit("next-ticket-to-work", user, (ticket) => {
       setTicket(ticket);
     });
